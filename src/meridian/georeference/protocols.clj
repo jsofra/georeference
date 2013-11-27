@@ -1,7 +1,11 @@
 (ns meridian.georeference.protocols)
 
 (defprotocol Transformable
-  (transform [this from-crs to-crs]))
+  (transform [this from-crs to-crs mt-lookup]))
 
 (defprotocol Referenced
-  (get-crs [this]))
+  (resolve-crs [this crs-lookup]))
+
+(defprotocol CRS
+  (->WKT [this])
+  (->SRS [this]))
