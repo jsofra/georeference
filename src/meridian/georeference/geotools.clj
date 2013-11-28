@@ -7,7 +7,7 @@
            [org.geotools.geometry.jts JTS]
            [org.opengis.referencing.crs CoordinateReferenceSystem]
            [com.vividsolutions.jts.geom Geometry]
-           [meridian.flatland Point LineString LinearRing Polygon
+           [meridian.shapes Point LineString LinearRing Polygon
             MultiPoint MultiLineString MultiPolygon
             GeometryCollection]))
 
@@ -26,7 +26,7 @@
            GeometryCollection]]
   (extend t p/Transformable
           {:transform (fn [this from-crs to-crs mt-lookup]
-                        (jts/->flatland (p/transform (jts/map->jts this)
+                        (jts/->shape (p/transform (jts/map->jts this)
                                                      from-crs to-crs mt-lookup)))}))
 
 (defn transform-to
